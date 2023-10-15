@@ -1,0 +1,32 @@
+Info:
+If controllers are detected, they'll be the first to control players. Next players will receive keyboard controls in order.
+For example if there are two controllers: controller 1 is player 1, controller 2 is player 2, keyboard 1 is player 3 and keyboard 2 is player 4.
+
+Controls:
+
+Controller:
+Steer - left stick
+Gas - R2
+Break & reverse - L1
+Shoot water - R1
+Respawn - Y / Triangle
+
+Keyboard 1:
+Move - WASD
+Shoot Water - E
+Respawn - Q
+
+Keyboard 2:
+Move - ARROWS
+Shoot Water - Num 0
+Respawn - Num 1
+
+Keyboard 3:
+Move - UHJK
+Shoot Water - I
+Respawn - Y
+
+Keyboard 4:
+Move - Num 8456
+Shoot Water - Num 9
+Respawn - Num7

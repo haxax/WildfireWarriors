@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6090594641934703427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8732916243833341006}
+  - component: {fileID: 7139064465223774764}
+  m_Layer: 0
+  m_Name: InputManagerFiller {DELETE}
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8732916243833341006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090594641934703427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7139064465223774764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090594641934703427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd66e2a6f7183c438d5bffb67a48070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _presetInputsAmount: 8
+  _joystickSpeedAxis: 10
+  _joystickBrakeAxis: 9
+  _joystickSteerAxis: 1
+  _joystickShootButton: 5
+  _joystickRollButton: 3
+  _joystickSpecialButton: 6
+  _keyboardControls:
+  - _forward: 119
+    _backward: 115
+    _steerLeft: 97
+    _steerRight: 100
+    _shoot: 101
+    _roll: 113
+    _special: 114
+  - _forward: 273
+    _backward: 274
+    _steerLeft: 276
+    _steerRight: 275
+    _shoot: 256
+    _roll: 257
+    _special: 266
+  - _forward: 117
+    _backward: 106
+    _steerLeft: 104
+    _steerRight: 107
+    _shoot: 105
+    _roll: 121
+    _special: 111
+  - _forward: 264
+    _backward: 261
+    _steerLeft: 260
+    _steerRight: 261
+    _shoot: 265
+    _roll: 263
+    _special: 270
+  _uniqueButtons:
+  - _name: Submit
+    _positiveButton: return
+    _altPositiveButton: joystick button 0
+    _negativeButton: 
+    _altNegativeButton: 
+    _type: 0
+    _joyAxis: 0
+    _joyNum: 0
+    _gravity: 1000
+    _dead: 0.001
+    _sensitivity: 1000
+    _snap: 0
+    _invert: 0
+  - _name: Cancel
+    _positiveButton: escape
+    _altPositiveButton: joystick button 1
+    _negativeButton: 
+    _altNegativeButton: 
+    _type: 0
+    _joyAxis: 0
+    _joyNum: 0
+    _gravity: 1000
+    _dead: 0.001
+    _sensitivity: 1000
+    _snap: 0
+    _invert: 0
+  - _name: Horizontal
+    _positiveButton: right
+    _altPositiveButton: d
+    _negativeButton: left
+    _altNegativeButton: a
+    _type: 0
+    _joyAxis: 0
+    _joyNum: 0
+    _gravity: 1000
+    _dead: 0.001
+    _sensitivity: 1000
+    _snap: 0
+    _invert: 0
+  - _name: Horizontal
+    _positiveButton: 
+    _altPositiveButton: 
+    _negativeButton: 
+    _altNegativeButton: 
+    _type: 2
+    _joyAxis: 0
+    _joyNum: 0
+    _gravity: 0
+    _dead: 0.19
+    _sensitivity: 1
+    _snap: 0
+    _invert: 0
+  - _name: Vertical
+    _positiveButton: up
+    _altPositiveButton: w
+    _negativeButton: down
+    _altNegativeButton: s
+    _type: 0
+    _joyAxis: 1
+    _joyNum: 0
+    _gravity: 1000
+    _dead: 0.001
+    _sensitivity: 1000
+    _snap: 0
+    _invert: 0
+  - _name: Vertical
+    _positiveButton: 
+    _altPositiveButton: 
+    _negativeButton: 
+    _altNegativeButton: 
+    _type: 2
+    _joyAxis: 1
+    _joyNum: 0
+    _gravity: 0
+    _dead: 0.19
+    _sensitivity: 1
+    _snap: 0
+    _invert: 1
+  - _name: Pause
+    _positiveButton: escape
+    _altPositiveButton: joystick button 7
+    _negativeButton: 
+    _altNegativeButton: 
+    _type: 0
+    _joyAxis: 0
+    _joyNum: 0
+    _gravity: 1000
+    _dead: 0.001
+    _sensitivity: 1000
+    _snap: 0
+    _invert: 0

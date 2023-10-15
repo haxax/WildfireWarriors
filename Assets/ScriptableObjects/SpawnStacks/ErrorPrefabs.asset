@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799a785e95b6a8d4884de5a833d39e67, type: 3}
+  m_Name: ErrorPrefabs
+  m_EditorClassIdentifier: 
+  _spawnableType: 0
+  _prefabs:
+  - {fileID: 1955230040303209224, guid: 2bcedee8f7dfcb94982e3cf105c27c54, type: 3}
