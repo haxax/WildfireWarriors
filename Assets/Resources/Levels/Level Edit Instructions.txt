@@ -1,0 +1,338 @@
+Level edit instructions
+------------------------
+Note: current version doesn't have much validations in place. Therefore if something isn't set correctly, things may break.
+There are very specific rules that has to match.
+- Each level file should contain: Height map, tile map and spawn points.
+- Each line in height map has to be equal in length.
+- Each line in tile map has to be one character shorter than height map's lines.
+- Tile map has to have one line less than height map.
+- These sections has to be separated with lines with exactly one character.
+- Minimum size for a level is 2x1 tiles.
+- There isn't maximum size, but larger maps may have performance issues.
+- Use of Notepad++ or other simple text editor is recommended.
+
+
+
+Height map
+----------
+- Height map defines the vertex point heights of the ground. 
+- Height is defined by characters' decimal value. 
+- Lowest supported character is Space (decimal value 32). Next 255 characters are also supported (exception might be some special characters).
+- First characters in incremental order are:
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+- Google ASCII Table to see more what value each character represents.
+- Simple flat height map for a 10x10 tile level would look something like this:
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+00000000000
+- As you may have noticed, each line has 11 characters and there are 11 lines. This is because in order to draw 10 tiles, we need extra row and column to get the final sides of the tiles. Well get back to this after tile map.
+- To create a small hill in the middle of the map we can do something like this:
+00000000000
+00000000000
+00000000000
+00011111000
+00012221000
+00012321000
+00012221000
+00011111000
+00000000000
+00000000000
+00000000000
+
+
+
+Tile Map
+----------
+- Tile map defines the texture of each tile of the ground.
+- Tile map uses the same logic with characters as height map. Instead of representing height, on tile map characters' decimal value represent tile textures' id on the sprite sheet. Therefore to draw a specific texture, you must use correct character. All supported characters are explained at the end of this instruction.
+- Space is a very special character on tile map, instead of drawing a specific texture, it will color the tile according to it's height. All tiles with Space character will also spawn a tree on top of it.
+- Simple blank tile map for a 10x10 tile level would look something like this:
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+::::::::::
+- To create a road going around the edges, we can do something like this:
+2111111113
+0::::::::0
+0::::::::0
+0::::::::0
+0::::::::0
+0::::::::0
+0::::::::0
+0::::::::0
+0::::::::0
+4111111115
+- To add trees to the level, we can replace the ':' characters with Space ' ':
+2111111113
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+4111111115
+
+
+
+Spawn points
+---------------
+- Final part of level files is spawn points.
+- Mostly you only need to add spawn points for players and fires.
+- Spawn points are just a list at the end of the file, with specific values set.
+- To create a new spawn point, you have to add new line and insert the following:
+[id],[x],[y],[rotation],[chances to spawn]
+- Now you have to replace every [] with a value.
+- [id] has to be replaced with the id of the spawn type: -1 for player spawn point, 2 for fire spawn point.
+- [x] has to be replaced with the spawn tile's x-coordinate. This is (x'th - 1) character in a row, first character is 0, second 1 etc.
+- [y] has to be replaced with the spawn tile's y-coordinate. This is (y'th - 1) character in a column, first character is 0, second 1 etc.
+- [rotation] has to be replaced with start rotations, value between 0 to 360. Can be left to 0.
+- [chances to spawn] has to be replaced with a value between 0 and 1000. This value indicates how likely the thing will spawn. 0 = 0% chances, 1 = 0.1% chances to spawn, 1000 = 100% chances to spawn. By default this is good to set at 1000.
+- To add player spawn point to each corner of the 10x10 tile level, we can do something like this:
+-1,0,0,0,1000
+-1,9,0,0,1000
+-1,0,9,0,1000
+-1,9,9,0,1000
+- To add 4 fire spawn points around the middle of the map, we can do something like this:
+-1,0,0,0,1000
+-1,9,0,0,1000
+-1,0,9,180,1000
+-1,9,9,180,1000
+2,3,3,0,1000
+2,6,3,0,1000
+2,3,6,0,1000
+2,6,6,0,1000
+
+
+
+Finalizing the level file
+-------------------------
+- When you have defined all three section - height map, tile map and spawn points - all you have to do is combine them.
+- To combine them, you have to copy each section in that same order on top of each other.
+- To make the game understand the section, you have to divide them using lines with exactly one character. Character can be any, for example we can use 'x'.
+- So first we copy the height map:
+00000000000
+00000000000
+00000000000
+00011111000
+00012221000
+00012321000
+00012221000
+00011111000
+00000000000
+00000000000
+00000000000
+- Next we add dividing line with one character, 'x':
+00000000000
+00000000000
+00000000000
+00011111000
+00012221000
+00012321000
+00012221000
+00011111000
+00000000000
+00000000000
+00000000000
+x
+- Next we copy the tile map:
+00000000000
+00000000000
+00000000000
+00011111000
+00012221000
+00012321000
+00012221000
+00011111000
+00000000000
+00000000000
+00000000000
+x
+2111111113
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+4111111115
+- Next we add another dividing line with one character:
+00000000000
+00000000000
+00000000000
+00011111000
+00012221000
+00012321000
+00012221000
+00011111000
+00000000000
+00000000000
+00000000000
+x
+2111111113
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+4111111115
+x
+- Finally we add the spawn points:
+00000000000
+00000000000
+00000000000
+00011111000
+00012221000
+00012321000
+00012221000
+00011111000
+00000000000
+00000000000
+00000000000
+x
+2111111113
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+0        0
+4111111115
+x
+-1,0,0,0,1000
+-1,9,0,0,1000
+-1,0,9,180,1000
+-1,9,9,180,1000
+2,3,3,0,1000
+2,6,3,0,1000
+2,3,6,0,1000
+2,6,6,0,1000
+- Now we have a working level data.
+- To play the level you'll have to copy the text we made and insert it to the custom level loader.
+
+
+
+
+
+- If it feels complicated to figure out how height map and tile map goes together you can try the following.
+- For the examples we use this simple 4x4 tile level:
+12345
+12345
+12345
+12345
+12345
+x
+abcd
+efgh
+ijkl
+mnop
+- Think each tile as a rectangle, where the tile is in the middle:
+•-•
+|a|
+•-•
+- Whole tile map would then be like this:
+•-•-•-•-•
+|a|b|c|d|
+•-•-•-•-•
+|e|f|g|h|
+•-•-•-•-•
+|i|j|k|l|
+•-•-•-•-•
+|m|n|o|p|
+•-•-•-•-•
+- Each dot in that represents a corner of a tile. And each of them has to replaced with a height value.
+- If we insert the values from the height map to where the dots are placed, we can see how the tile map values are surrounded by the height map values. And why there has to be one more row and column of height characters:
+1-2-3-4-5
+|a|b|c|d|
+1-2-3-4-5
+|e|f|g|h|
+1-2-3-4-5
+|i|j|k|l|
+1-2-3-4-5
+|m|n|o|p|
+1-2-3-4-5
+
+
+
+
+
+Tile map character explanations:
+mnop' ' = grass, spawns tree
+'0' = straight road, vertical
+'1' = straight road, horizontal
+'2' = curve, down to right
+'3' = curve, down to left
+'4' = curve, up to right
+'5' = curve, up to left
+'6' = T-intersection, down to horizontal
+'7' = T-intersection, up to horizontal
+'8' = T-intersection, right to vertical
+'9' = T-intersection, left to vertical
+':' = blank road
+';' = intersection to all directions
+'<' = end of road, bottom to top
+'=' = end of road, top to bottom
+'>' = end of road, right to left
+'?' = end of road, left to right
+'@' = blank road with road connection at right
+'A' = blank road with road connection at left
+'B' = blank road with road connection at top
+'C' = blank road with road connection at bottom
+'D' = blank road with corner at bottom left
+'E' = blank road with corner at top left
+'F' = blank road with corner at top right
+'G' = blank road with corner at bottom right
+'H' = blank road with line at left
+'I' = blank road with line at right
+'J' = blank road with line at top
+'K' = blank road with line at bottom
+'L' = blank road with corner at top left
+'M' = blank road with corner at top right
+'N' = blank road with corner at bottom left
+'O' = blank road with corner at bottom right
+'P' = parking lot, middle, horizontal, left end
+'Q' = parking lot, middle, horizontal, center
+'R' = parking lot, middle, horizontal, right end
+'S' = parking lot, middle, horizontal, both ends
+'T' = parking lot, middle, vertical, top end
+'U' = parking lot, middle, vertical, center
+'V' = parking lot, middle, vertical, bottom end
+'W' = parking lot, middle, vertical, both ends
+'X' = parking lot, bottom, horizontal, left end
+'Y' = parking lot, bottom, horizontal, center
+'Z' = parking lot, bottom, horizontal, right end
+'[' = parking lot, bottom, horizontal, both ends
+'\' = parking lot, top, horizontal, left end
+']' = parking lot, top, horizontal, center
+'^' = parking lot, top, horizontal, right end
+'_' = parking lot, top, horizontal, both ends
+'`' = parking lot, left, vertical, top end
+'a' = parking lot, left, vertical, center
+'b' = parking lot, left, vertical, bottom end
+'c' = parking lot, left, vertical, both ends
+'d' = parking lot, right, vertical, top end
+'e' = parking lot, right, vertical, center
+'f' = parking lot, right, vertical, bottom end
+'g' = parking lot, right, vertical, both ends
